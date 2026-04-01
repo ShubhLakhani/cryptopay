@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Site</title>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 🔥 This hides "Built with Spline" */
+    .hide-badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 160px;
+      height: 60px;
+      background: black;
+      z-index: 9999;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <iframe src="https://my.spline.design/prismcoin-e6u2eIvdbRBswUltewY2gFcZ/"></iframe>
+
+    <!-- Cover element -->
+    <div class="hide-badge"></div>
+  </div>
+
+</body>
+</html>
