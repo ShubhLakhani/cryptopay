@@ -4,13 +4,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     *, *::before, *::after {
-      box-sizing: border-box;  /* FIX: prevents overflow */
+      box-sizing: border-box;
     }
     body, html {
       margin: 0;
       padding: 0;
       background: black;
-      overflow-x: hidden;     /* FIX: no horizontal scroll */
+      overflow-x: hidden;
     }
     .hero {
       position: relative;
@@ -19,40 +19,22 @@
       overflow: hidden;
     }
     iframe {
-      position: absolute;     /* FIX: was just width/height */
+      position: absolute;
       top: 0;
-      left: 50%;              /* FIX: center the canvas */
-      transform: translateX(-50%);
+      left: 50%;
+      transform: translateX(-50%) scale(1.5);  /* ← CHANGED: added scale */
+      transform-origin: center center;          /* ← ADDED */
       width: 100%;
       height: 100%;
       border: none;
-      min-width: 600px;       /* FIX: Spline needs min width */
-    }
-    .content {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      text-align: center;
-      z-index: 2;
-      font-family: Arial;
-      width: 90%;             /* FIX: constrain width */
-      max-width: 600px;       /* FIX: don't overflow on mobile */
-      padding: 0 16px;        /* FIX: side padding */
-    }
-    .content h1, .content h2 {
-      word-wrap: break-word;  /* FIX: no text overflow */
+      min-width: 600px;
     }
     @media (max-width: 768px) {
-      .content {
-        top: 55%;             /* FIX: push down on mobile */
-        font-size: 14px;
-      }
       iframe {
         left: 0;
-        transform: none;
-        min-width: 100%;      /* FIX: full width on mobile */
+        transform: scale(1.5);                 /* ← CHANGED: scale only on mobile */
+        transform-origin: center center;
+        min-width: 100%;
       }
     }
     .hide-badge {
@@ -69,7 +51,7 @@
   <section class="hero">
     <iframe
       src="https://my.spline.design/prismcoin-e6u2eIvdbRBswUltewY2gFcZ/"
-      allowfullscreen>          <!-- FIX: add allowfullscreen -->
+      allowfullscreen>
     </iframe>
     <div class="hide-badge"></div>
   </section>
