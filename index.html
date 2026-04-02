@@ -2,27 +2,32 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;  /* FIX: prevents overflow */
+    }
     body, html {
       margin: 0;
       padding: 0;
       background: black;
+      overflow-x: hidden;     /* FIX: no horizontal scroll */
     }
-
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
       overflow: hidden;
     }
-
     iframe {
+      position: absolute;     /* FIX: was just width/height */
+      top: 0;
+      left: 50%;              /* FIX: center the canvas */
+      transform: translateX(-50%);
       width: 100%;
       height: 100%;
       border: none;
+      min-width: 600px;       /* FIX: Spline needs min width */
     }
-
     .content {
       position: absolute;
       top: 40%;
@@ -32,16 +37,24 @@
       text-align: center;
       z-index: 2;
       font-family: Arial;
+      width: 90%;             /* FIX: constrain width */
+      max-width: 600px;       /* FIX: don't overflow on mobile */
+      padding: 0 16px;        /* FIX: side padding */
     }
-
-    /* Mobile fix */
+    .content h1, .content h2 {
+      word-wrap: break-word;  /* FIX: no text overflow */
+    }
     @media (max-width: 768px) {
       .content {
-        top: 50%;
+        top: 55%;             /* FIX: push down on mobile */
         font-size: 14px;
       }
+      iframe {
+        left: 0;
+        transform: none;
+        min-width: 100%;      /* FIX: full width on mobile */
+      }
     }
-
     .hide-badge {
       position: absolute;
       bottom: 0;
@@ -50,22 +63,19 @@
       background: linear-gradient(transparent, black);
       z-index: 3;
     }
-
   </style>
 </head>
-
 <body>
-
   <section class="hero">
-    <iframe src="https://my.spline.design/prismcoin-e6u2eIvdbRBswUltewY2gFcZ/"></iframe>
-
+    <iframe
+      src="https://my.spline.design/prismcoin-e6u2eIvdbRBswUltewY2gFcZ/"
+      allowfullscreen>          <!-- FIX: add allowfullscreen -->
+    </iframe>
     <div class="content">
       <h1>Fast. Efficient.</h1>
       <h2>Revolutionary</h2>
     </div>
-
     <div class="hide-badge"></div>
   </section>
-
 </body>
 </html>
